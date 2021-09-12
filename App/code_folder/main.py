@@ -18,8 +18,11 @@ async def get_data():
 
 
 @app.get("/get_params")
-async def get_with_params(skip: int = 0, limit: int = 10):
-    return JSONResponse(status_code=status.HTTP_200_OK, content={"key": "some value"})
+async def get_with_params(station_id: int = 0):
+    response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
+    json = response.json()
+    dictio = filter_json(json, "12650")
+    return JSONResponse(status_code=status.HTTP_200_OK, content=dictio)
 
 
 @app.post("/post")
