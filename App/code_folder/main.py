@@ -28,7 +28,7 @@ async def get_random_users(how_much: int = 1):
     response_json = response.json()
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response.json()["results"])
 
 
 @app.get("/create_random_users")
