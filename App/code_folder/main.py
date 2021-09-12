@@ -2,6 +2,7 @@
 from fastapi import FastAPI, HTTPException, status, Request
 from fastapi.responses import JSONResponse
 import requests
+import pandas as pd
 
 # user created modules
 from filter_json import filter_json
@@ -24,7 +25,11 @@ async def get_imgw_with_station_id(station_id: int = 0):
 @app.get("/get_random_users")
 async def get_random_users(how_much: int = 1):
     response = requests.get(f"https://randomuser.me/api/?results={how_much}")
-    return JSONResponse(status_code=status.HTTP_200_OK, content={})
+    response_json = response.json()
+    # df = pd.DataFrame(response.json()["results"])
+    # df.to_excel("Some_excel.xlsx")
+    dictio = {"employee1":"employee1_obj", "employee2":"employee2_obj", "employee3":"employee3_obj"}
+    return JSONResponse(status_code=status.HTTP_200_OK)
 
 
 @app.post("/post")
