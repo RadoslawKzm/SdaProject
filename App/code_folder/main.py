@@ -41,9 +41,9 @@ async def create_random_users(how_much: int = 1):
         last = person["name"]["last"]
         age = person["dob"]["age"]
         Employee(name=name, last_name=last, age=age)
-    dictio = Employee.registry
+    # dictio = Employee.registry
 
-    return JSONResponse(status_code=status.HTTP_200_OK)
+    return JSONResponse(status_code=status.HTTP_200_OK, content=Employee.get_json_registry())
 
 
 @app.post("/post")
