@@ -8,8 +8,10 @@ app = FastAPI()
 
 @app.get("/get")
 async def get_data():
-
-    return JSONResponse(status_code=status.HTTP_200_OK, content={"key": "some value"})
+    response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
+    json = response.json()
+    station = json[10]
+    return JSONResponse(status_code=status.HTTP_200_OK, content=station)
 
 
 @app.get("/get_params")
@@ -25,4 +27,4 @@ async def post_data(request: Request):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
