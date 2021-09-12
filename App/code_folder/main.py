@@ -28,7 +28,7 @@ async def get_random_users(how_much: int = 1):
     response_json = response.json()
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
-    dictio = {"employee1":"employee1_obj", "employee2":"employee2_obj", "employee3":"employee3_obj"}
+    dictio = {"employee1": "employee1_obj", "employee2": "employee2_obj", "employee3": "employee3_obj"}
     return JSONResponse(status_code=status.HTTP_200_OK)
 
 
