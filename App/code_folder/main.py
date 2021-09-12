@@ -28,6 +28,15 @@ async def get_random_users(how_much: int = 1):
     response_json = response.json()
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
+    return JSONResponse(status_code=status.HTTP_200_OK)
+
+
+@app.get("/create_random_users")
+async def create_random_users(how_much: int = 1):
+    response = requests.get(f"https://randomuser.me/api/?results={how_much}")
+    response_json = response.json()
+    # df = pd.DataFrame(response.json()["results"])
+    # df.to_excel("Some_excel.xlsx")
     dictio = {"employee1": "employee1_obj", "employee2": "employee2_obj", "employee3": "employee3_obj"}
     return JSONResponse(status_code=status.HTTP_200_OK)
 
