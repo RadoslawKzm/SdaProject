@@ -1,0 +1,21 @@
+ctrl + alt + l  >> auto format code
+ctrl + shift + f10  >> run actually opened code
+ctrl + k  >> git commit
+ctrl + shift + k  >> git push to repo
+ctrl + t  >> update project from git
+ctrl + /  > comment/uncomment part of code
+shift + del  > delete line where you have cursor
+tab  >> indent code to the right
+shift + tab  << indent code to the left
+alt + j  >> multi cursor functionality
+ctrl + d  >> copy line where cursor is
+ctrl + shift + u  >> capitalize selected fragment
+ctrl + p  >> hint for input arguments to any function
+"""<enter>"""  >> auto documentation for function with properly typed arguments
+cursor at unresolved reference & alt+enter >> import unresolved reference from libs
+
+pip3 commands:
+pip3 install -r ./App/requirements.txt
+
+Slack:
+https://join.slack.com/t/pytgda10/shared_invite/zt-tfb4mva8-aWJHB2j9Va6FdalLaI75rA
