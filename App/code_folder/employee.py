@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Employee class file"""
+# builtin imports
+from __future__ import annotations
 from uuid import uuid4, UUID
 from typing import Dict
 
@@ -30,5 +30,6 @@ class Employee:
     def create_email(self) -> str:
         return f"{self.name}.{self.last}@company.com"
 
-    def create_uuid(self) -> UUID:
+    @staticmethod
+    def create_uuid() -> UUID:
         return uuid4()
