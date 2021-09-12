@@ -11,6 +11,7 @@ async def get_data():
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
     json = response.json()
     station = json[10]
+    dictio = {}
     return JSONResponse(status_code=status.HTTP_200_OK, content=station)
 
 
