@@ -2,24 +2,20 @@
 from fastapi import FastAPI, HTTPException, status, Request
 from fastapi.responses import JSONResponse
 import requests
-import pickle
+
+# user created modules
+from filter_json import filter_json
 
 app = FastAPI()
 
 
-def filter_json(_json: list[dict], id_stacji: int) -> dict[int:dict]:
-    pass
-
-
 @app.get("/get")
 async def get_data():
+    print(f"APP MAIN {__name__ = }")
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
     json = response.json()
-    with open("json.pickle", "wb") as file:
-        pickle.dump(json, file)
-    station = json[10]
-    dictio = {}  # {12650:{'id_stacji': {'12650', 'stacja': 'Kasprowy Wierch', 'data_pomiaru': '2021-09-12', 'godzina_pomiaru': '8', 'temperatura': '9.2', 'predkosc_wiatru': '2', 'kierunek_wiatru': '60', 'wilgotnosc_wzgledna': '67.6', 'suma_opadu': '0', 'cisnienie': None}}
-    return JSONResponse(status_code=status.HTTP_200_OK, content=station)
+    dictio = filter_json(json, "12650")
+    return JSONResponse(status_code=status.HTTP_200_OK, content=dictio)
 
 
 @app.get("/get_params")
