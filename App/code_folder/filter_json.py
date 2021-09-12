@@ -15,4 +15,4 @@ def filter_json(_json: List[Dict], id_stacji: str) -> Dict:
     return {item["id_stacji"]: item for item in _json}[id_stacji]
 
 
-output = filter_json(_json=our_json, id_stacji=12650)
+output = filter_json(_json=our_json, id_stacji="12650")
