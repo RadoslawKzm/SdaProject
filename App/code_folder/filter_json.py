@@ -8,7 +8,7 @@ def filter_json(_json: List[Dict], id_stacji: str) -> Dict:
     # for item in _json:
     #     dict_1[item["id_stacji"]] = item
     # dict_1 = dict_1[id_stacji]
-    print(f"{__name__ = }")
+    print(f"FILTER JSON {__name__ = }")
     return {item["id_stacji"]: item for item in _json}[id_stacji]
 
 
