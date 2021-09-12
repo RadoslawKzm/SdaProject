@@ -23,7 +23,7 @@ async def get_imgw_with_station_id(station_id: int = 0):
 
 @app.get("/get_random_users")
 async def get_random_users(how_much: int = 1):
-    response = requests.get("dummy")
+    response = requests.get(f"https://randomuser.me/api/?results={how_much}")
     return JSONResponse(status_code=status.HTTP_200_OK, content={})
 
 
