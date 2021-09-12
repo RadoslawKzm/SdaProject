@@ -10,19 +10,21 @@ app = FastAPI()
 
 
 @app.get("/get")
-async def get_data():
+async def get_imgw_data():
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
-    json = response.json()
-    dictio = filter_json(json, "12650")
-    return JSONResponse(status_code=status.HTTP_200_OK, content=dictio)
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response.json())
 
 
-@app.get("/get_params")
-async def get_with_params(station_id: int = 0):
+@app.get("/get_imgw_with_station_id")
+async def get_imgw_with_station_id(station_id: int = 0):
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
-    json = response.json()
-    dictio = filter_json(json, "12650")
-    return JSONResponse(status_code=status.HTTP_200_OK, content=dictio)
+    return JSONResponse(status_code=status.HTTP_200_OK, content=filter_json(response.json(), str(station_id)))
+
+
+@app.get("/get_random_users")
+async def get_random_users(how_much: int = 1):
+    response = requests.get("dummy")
+    return JSONResponse(status_code=status.HTTP_200_OK, content={})
 
 
 @app.post("/post")
