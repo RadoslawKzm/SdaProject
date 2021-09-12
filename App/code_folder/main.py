@@ -11,7 +11,6 @@ app = FastAPI()
 
 @app.get("/get")
 async def get_data():
-    print(f"APP MAIN {__name__ = }")
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
     json = response.json()
     dictio = filter_json(json, "12650")
