@@ -2,9 +2,9 @@
 from fastapi import FastAPI, HTTPException, status, Request
 from fastapi.responses import JSONResponse
 import requests
-import pandas as pd
 
 # user created modules
+from employee import Employee
 from filter_json import filter_json
 
 app = FastAPI()
@@ -26,6 +26,7 @@ async def get_imgw_with_station_id(station_id: int = 0):
 async def get_random_users(how_much: int = 1):
     response = requests.get(f"https://randomuser.me/api/?results={how_much}")
     response_json = response.json()
+    # import pandas as pd
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
     return JSONResponse(status_code=status.HTTP_200_OK, content=response.json()["results"])
@@ -35,9 +36,13 @@ async def get_random_users(how_much: int = 1):
 async def create_random_users(how_much: int = 1):
     response = requests.get(f"https://randomuser.me/api/?results={how_much}")
     response_json = response.json()
-    # df = pd.DataFrame(response.json()["results"])
-    # df.to_excel("Some_excel.xlsx")
-    dictio = {"employee1": "employee1_obj", "employee2": "employee2_obj", "employee3": "employee3_obj"}
+    for person in response_json["results"]:
+        name = person["name"]["first"]
+        last = person["name"]["last"]
+        age = person["dob"]["age"]
+        Employee(name=name, last_name=last, age=age)
+    dictio = Employee.registry
+
     return JSONResponse(status_code=status.HTTP_200_OK)
 
 
