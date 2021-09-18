@@ -8,6 +8,10 @@ class Node:
         return f"{self.name}"
 
 
+def recursive_algorithm():
+    """left to right walkthrough"""
+
+
 if __name__ == '__main__':
     n1 = Node(name="n1", value=1)
     n2 = Node(name="n2", value=2)
