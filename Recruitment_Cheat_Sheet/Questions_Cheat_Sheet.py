@@ -198,6 +198,7 @@ dupa(lst)
 # 26. roznica miedzy threading a async?
 """threading to asynchronicznosc hardware a async to petla gevent polecam ten filmik:
 https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
+# 27. Zadanie STX Next na juniora: Napiszcie komende string.split bez jej uzywania :D
 ############################## DOCKER #####################################3
 # 1. Co to są layery w dockerze?
 """Jak skladacie sobie docker file to kazda linijka to nowy layer. 
