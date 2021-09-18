@@ -8,8 +8,14 @@ class Node:
         return f"{self.name}"
 
 
-def recursive_algorithm():
+def recursive_algorithm(first_node: Node):
     """left to right walkthrough"""
+    print(first_node.name)
+    if not first_node.nodes:
+        return
+    for node in first_node.nodes:
+        recursive_algorithm(node)
+        print("pass")
 
 
 if __name__ == '__main__':
@@ -20,3 +26,4 @@ if __name__ == '__main__':
     n5 = Node(name="n5", value=5)
     n1.nodes.extend([n2, n3])
     n2.nodes.extend([n4, n5])
+    recursive_algorithm(n1)
