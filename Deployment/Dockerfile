@@ -10,5 +10,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUBUFFERED 1
 ENV PYTHONENCODING UTF-8
 ENV PYTHONPATH /
-
+COPY ../App/requirements.txt /App/
+WORKDIR /App
+RUN pip3 install -r requirements.txt
+COPY ../App /App
+WORKDIR /App/code_folder
 

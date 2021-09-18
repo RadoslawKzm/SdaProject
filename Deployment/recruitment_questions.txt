@@ -6,4 +6,4 @@ Layers in docker?
 - ...
 How to share files outside of docker?
 - using volumes
-
+Layers from least changing to the most

@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  App:
+    container_name: Aplikacja
+    image: test
+    build:
+      context: ../.
+      dockerfile: ./Deployment/Dockerfile
+    command: python3 main.py
+    ports:
+      - "8001:8001"
+#    stdin_open: true # docker run -i
+#    tty: true        # docker run -t
+
+# leaving it here for future debugging
+#    stdin_open: true # docker run -i
+#    tty: true        # docker run -t
