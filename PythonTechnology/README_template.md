@@ -205,13 +205,14 @@ In future I would do full CI/CD process verifying code quality.<br>
 Before you send the code to the server, please runt this tests
 
 ```
-/Task_2$ python -m black --check -l 120 --exclude=venv .
-/Task_2$ python -m flake8 . --ignore E501
-python -m pylama --ignore E501
-/Task_2$ python -m isort --check-only --diff .
-/Task_2$ python -m mypy --html-report ./tests/results/mypy .
-/Task_2$ bandit ./code_folder -r
-/Task_2$ safety check --full-report
+/SdaProject/App/code_folder$ python -m black --check -l 120 --exclude=venv .
+/SdaProject/App/code_folder$ python -m flake8 . --ignore E501
+/SdaProject/App/code_folder$ python -m pylama --ignore E501
+/SdaProject/App/code_folder$ python -m isort --check-only --diff .
+/SdaProject/App/code_folder$ python -m mypy --html-report ./tests/results/mypy .
+/SdaProject/App/code_folder$ bandit ./code_folder -r
+/SdaProject/App/code_folder$ safety check --full-report
+/SdaProject$ pre-commit run --all-files -c ./PythonTechnology/.pre-commit-config.yaml
 ```
 
 Part of errors you can fix running:
@@ -220,4 +221,3 @@ Part of errors you can fix running:
 /Task_2$ python -m black -l 120 --exclude=venv .
 /Task_2$ python -m isort .
 ```
-
