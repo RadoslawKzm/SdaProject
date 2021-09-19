@@ -10,6 +10,7 @@
 #### [Code checkers](#code-checkers)
 
 - [Flake8](#--flake8)
+- [Pylama](#--pylama)
 - [Bandit](#--bandit)
 - [Safety](#--safety)
 - [MyPy](#--mypy)
@@ -53,6 +54,8 @@
 
 #### - Flake8 - `Code linter and code smells finder`
 
+#### - Pylama - `Code linter and code smells finder`
+
 #### - Bandit - `Looking for left AWS keys etc.`
 
 #### - Safety - `Checking safety of dependency modules`
@@ -75,6 +78,12 @@
 
 #### - Kubernetes - `Containers orchestrator for great scale`
 
+#### - Terraform - `Serverless cloud creator`
+
+#### - Ansible - `Serverless approach most popular` / Puppet - `Server approach less popular`
+
+#### - Jenkins - `CI/CD client`
+
 ## Development tools:
 
 #### - Pycharm - `Python IDE for python code development by JetBrains`
@@ -94,6 +103,39 @@
 #### - venv - `Virtual Environment so our development won't kill our OS libraries`
 
 #### - PyPI - `Python Package Index, repository for packages to be downloaded`
+
+# ---------------------------------------------------------------------------------------
+
+# EXAMPLE README.md
+
+# PROJECT NAME
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style: black](https://img.shields.io/badge/code%20style-Flake8-green)](https://github.com/PyCQA/flake8)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![security: bandit](https://img.shields.io/badge/security-safety-yellow)](https://github.com/pyupio/safety)
+[![](tests/results/coverage.svg)]()
+
+<br>coverage badge will appear after running tests :)<br>
+
+## Table of content
+
+- [Technology stack](#technology-stack)
+- [Quality Assurance](#quality-assurance)
+- [Installation](#installation)
+- [Running the service](#running-the-service)
+- [Tests](#tests)
+- [Before commit](#before-commit)
+
+## Technology Stack
+
+- Python 3.6
+- FastAPI 0.68.1
+- uvicorn 0.15.0
+- coverage 5.5
+- pytest 6.2.4
 
 ## Quality Assurance
 
@@ -129,10 +171,10 @@
 
 ##### Docker start & build
 
-Change directory to Task_2 Run command:
+Change directory to SdaProject & Run command:
 
 ```
-$ docker-compose build base && docker-compose up --build task2-app && docker-compose rm -fsv
+$ docker-compose build && docker-compose up App && docker-compose rm -fsv
 ```
 
 ##### Close docker
@@ -165,6 +207,7 @@ Before you send the code to the server, please runt this tests
 ```
 /Task_2$ python -m black --check -l 120 --exclude=venv .
 /Task_2$ python -m flake8 . --ignore E501
+python -m pylama --ignore E501
 /Task_2$ python -m isort --check-only --diff .
 /Task_2$ python -m mypy --html-report ./tests/results/mypy .
 /Task_2$ bandit ./code_folder -r
