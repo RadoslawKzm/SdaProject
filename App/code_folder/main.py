@@ -1,11 +1,11 @@
 # pip3 install imports
-from fastapi import FastAPI, HTTPException, status, Request
-from fastapi.responses import JSONResponse
 import requests
+from fastapi import FastAPI, HTTPException, Request, status
+from fastapi.responses import JSONResponse
 
 # user created modules
-from employee import Employee
-from filter_json import filter_json
+from App.code_folder.employee import Employee
+from App.code_folder.filter_json import filter_json
 
 app = FastAPI()
 
@@ -29,6 +29,8 @@ async def get_random_users(how_much: int = 1):
     # import pandas as pd
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
+    Dupa = 1
+    print(Dupa)
     return JSONResponse(status_code=status.HTTP_200_OK, content=response.json()["results"])
 
 

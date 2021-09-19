@@ -1,5 +1,5 @@
 import pickle
-from typing import List, Dict
+from typing import Dict, List
 
 
 def filter_json(_json: List[Dict], id_stacji: str) -> Dict:
