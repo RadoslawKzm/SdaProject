@@ -10,6 +10,7 @@ Może nastąpić konflikt na zasadzie dziedziczenia krzyzowego Example(A(C,D), B
 
 # 3. Wyjaśnij jak działa MRO
 
+
 class C:
     def printing(self):
         print("class C")
@@ -53,10 +54,10 @@ Immutable, gdy zmieniamy inta to nie robimy append ani nic innego co go zmieni t
 """
 Tuple definiujemy przed startem programu i jest ona immutable co oznacza ze interpreter przeznacza jakąś ilość ram,
 i nie musi zostawiać sobie overheadu jak w przypadku listy.
-Lista chyba zostawia sobie puste miejsce na wypadek appendow w ilości 2^n czyli macie 4 elementy w liscie to lista ma 
+Lista chyba zostawia sobie puste miejsce na wypadek appendow w ilości 2^n czyli macie 4 elementy w liscie to lista ma
 tam w srodku jeszcze 4 pola wolne. Macie 20 elemetow to macie tam wolnych do max 32 elemntow.
 Append do listy to O(1) aaaaaale gdy traficie na koniec wolnych miejsc zaalokowanych przez interpreter to robi on:
-nowa_lista = [copy(lista)] + [len(lista) * None] przez co jak niefortunnie traficie na kopie przy milionie elementow 
+nowa_lista = [copy(lista)] + [len(lista) * None] przez co jak niefortunnie traficie na kopie przy milionie elementow
 to macie duuupe :D
 Dlatego też tworzenie list wielkich szybsze jest przy uzyciu list(iterator) niz robienie [item for item in iterator]
 """
@@ -92,7 +93,7 @@ class Iterator:
     # 10. Co to jest context manager?
 
 
-"""Takie coś co robi rzeczy przed kodem i rzeczy po kodzie lapiąc jeszcze wyjatki. 
+"""Takie coś co robi rzeczy przed kodem i rzeczy po kodzie lapiąc jeszcze wyjatki.
 Zaimplementowane metody __enter__ i __exit__"""
 
 
@@ -100,15 +101,19 @@ class CntxMngr:
     def __enter__(self):
         return self  # tu zwracamy dupa w > with COS as dupa:
 
-    def __exit__(self, exc_type, exc_val, exc_tb):  # tutaj lapiemy wyjatki jesli sa to exc_cos nie bedzie None
-        if any((exc_type, exc_val, exc_tb)):  # podwojne nawiasy bo any bierze iterator wiec dalem tuple, moglem liste
+    def __exit__(
+        self, exc_type, exc_val, exc_tb
+    ):  # tutaj lapiemy wyjatki jesli sa to exc_cos nie bedzie None
+        if any(
+            (exc_type, exc_val, exc_tb)
+        ):  # podwojne nawiasy bo any bierze iterator wiec dalem tuple, moglem liste
             # lapcie wyjatek
             return False  # gdy chcecie wywalic program tym exception, True jesli chcecie zdusic wyjatek(mozliwy anty pattern)
         # tu robcie cos na zakmniecie kodu
 
 
 # 11. Jaka jest roznica miedzy try/except a context managerem?
-"""W sumie rzadna, context manager to obiektowa implementacja try/except/finally. 
+"""W sumie rzadna, context manager to obiektowa implementacja try/except/finally.
 Jest na pewno czytelniej i mozecie to ponownie wykorzystac zamiast nakurwiac try/excepty"""
 
 # 12. Co to jest decorator?
@@ -116,7 +121,9 @@ Jest na pewno czytelniej i mozecie to ponownie wykorzystac zamiast nakurwiac try
 
 
 def decorator(func):
-    def wrapper(*args, **kwargs):  # to jest po to żeby łapać argumenty funkcji udekorowanej
+    def wrapper(
+        *args, **kwargs
+    ):  # to jest po to żeby łapać argumenty funkcji udekorowanej
         # do something przed
         try:
             retval = func()
@@ -150,11 +157,14 @@ Generator nie siedzi w ramie i procek zwraca wam na bierzaco on demand.
 Generator dobry gdy chcecie wziac pare pierwszych elementow iteratora i olac nie zapychajac pamieci
 Generator zly gdy chcecie iterowac pare razy po duzej strukturze
 """
+
+
 def generator():
     start: int = 0
     while True:
         yield start
         start += 1
+
 
 # 14. Czym sie rozni multiprocessing a multi threading albo asynchroniczne/asyncio
 """Multiprocessing to odpalacie pare rownoleglych procesow.
@@ -165,10 +175,10 @@ Async dobry gdy macie duzo operacji czekajacych jak requesty do innych stron itp
 
 # 15. Co to list comprhension lub olaboga lista skladana. To powie ten sam typ co zapyta o krotke xD
 """lst = [item for item in range(10)]"""
-"""16. Macie inne typy comprehension jak: 
+"""16. Macie inne typy comprehension jak:
 dict comprehension > dictio = {k:v for k,v in zip(range(10), range(11,21))},
 set comprehension > {dupa for dupa in range(1_000_000)}
-generator comprehension > (item for item in range(1_000_000)), tak, generatory tez tak mozecie skladac zamiast pisac 
+generator comprehension > (item for item in range(1_000_000)), tak, generatory tez tak mozecie skladac zamiast pisac
 yield
 """
 # 17. Co oznacza slowko yield?
@@ -177,6 +187,8 @@ yield
 # 18. Jest cos takiego o co nikt nie pyta i malo to wie, Consumer
 def consumer(item):
     test = yield
+
+
 """Taki konstrukt jest podstawą asynchronicznosci ale jak to powiecie to juz beda przytakiwac.
 Malo kto to zna. Wiec nie bedziecie musieli tlumaczyc jak z tego wynika async :D
 """
@@ -191,10 +203,14 @@ Malo kto to zna. Wiec nie bedziecie musieli tlumaczyc jak z tego wynika async :D
 # 25. CZy jak podajecie liste jako argument funkcji to podajecie przez wartosc czy referencje?
 """wszystko co mutable to podajecie jako referencje do obiektu w pamieci a co immutable jako wartosc"""
 lst = [5]
-def dupa(lista_d:list):
-    lista_d.extend([1,2,3,4])
+
+
+def dupa(lista_d: list):
+    lista_d.extend([1, 2, 3, 4])
+
+
 dupa(lst)
-#lista bedzie miala teraz [5,1,2,3,4] polecam python tutor do tego przykladu
+# lista bedzie miala teraz [5,1,2,3,4] polecam python tutor do tego przykladu
 # 26. roznica miedzy threading a async?
 """threading to asynchronicznosc hardware a async to petla gevent polecam ten filmik:
 https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
@@ -218,10 +234,10 @@ https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
 # 36. Jakie znacie inne brokery wirtualnych srodowisk?
 ############################## DOCKER #####################################3
 # 1. Co to są layery w dockerze?
-"""Jak skladacie sobie docker file to kazda linijka to nowy layer. 
+"""Jak skladacie sobie docker file to kazda linijka to nowy layer.
 Jezeli zmieni sie jakis wyzej w strukturze wszystkie nizej sa przebudowywane.
 Chodzi tez zeby pisac jak najwiecej w jednym layerze dzieki temu zmniejszamy objetosc dockera.
-W sumie nigdy nie musialem tego dokladnie wyjasniac wiec nie wiem jak to dziala ale to znaczy ze 
+W sumie nigdy nie musialem tego dokladnie wyjasniac wiec nie wiem jak to dziala ale to znaczy ze
 to wytlumaczenia wam wystarczy :D"""
 
 # 2. Jak polaczyc system plikow komputera z dockerem/ Co to volumen
@@ -246,7 +262,7 @@ to wytlumaczenia wam wystarczy :D"""
 
 ################################### AWS #########################################
 # 1. Jakie znasz rzeczy w AWSIE?
-"""EC2-virtualna maczyna, S3-zwykly dysk, RDS-system do bazy danych, Route53-modul do routingu, 
+"""EC2-virtualna maczyna, S3-zwykly dysk, RDS-system do bazy danych, Route53-modul do routingu,
 lambda-modul co dajecie tylko kod a on wam ten kod wykonuje na czyms, wieksza czesc SaaS (software as a service)"""
 # 2. Co robiliście na AWS?
 """Probowaliscie przeniesc grida obliczeniowego on permise(czyli firma ma sobie stacjonarne serwery u siebie w budynku)
