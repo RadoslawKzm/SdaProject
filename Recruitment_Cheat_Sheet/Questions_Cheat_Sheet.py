@@ -199,6 +199,23 @@ dupa(lst)
 """threading to asynchronicznosc hardware a async to petla gevent polecam ten filmik:
 https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
 # 27. Zadanie STX Next na juniora: Napiszcie komende string.split bez jej uzywania :D
+# 28. Pyc, python byte code i interpreter
+# 29. jak zabezpieczyc wasz kod gdy go dajecie do klienta zeby sobie nie skopiowal?
+"""dajecie mu byte code"""
+# 30. Jak przyspieszyc operacje numeryczne w pythoie?
+"""1. uzycie numpy
+2. uzycie jakiegos JIT min. numba
+3. uzycie pypy"""
+# 31. Jak zrobic modul?
+"""__init__.py"""
+# 32. Po co jest if name main?
+# 33. Import z *
+# 34. Po co __init__.py?
+"""Oznaczenie danego folderu dla pythona ze jest to pakiet/modul"""
+# 35. Co to jest pakiet, Co to jest modul? Jaka jest roznica?
+"""Uzupelnijcie :D"""
+""""""
+# 36. Jakie znacie inne brokery wirtualnych srodowisk?
 ############################## DOCKER #####################################3
 # 1. Co to są layery w dockerze?
 """Jak skladacie sobie docker file to kazda linijka to nowy layer. 
