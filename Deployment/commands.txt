@@ -5,3 +5,7 @@ docker run -it -p 8001:8001 --name Aplikacja --rm -v C:\Users\rdkkz\PycharmPrexi
 
 docker-compose build
 docker-compose up
+docker-compose build && docker-compose up App && docker-compose rm -fsv
+docker exec -it Aplikacja /bin/bash
+
+docker system prune
