@@ -5,4 +5,10 @@ RUN apt update -y && apt upgrade -y && \
     pip3 install --upgrade pip && \
     apt install netcat curl -y
 
+COPY ../requirements.txt /App/
+WORKDIR /App/
+RUN python3 -m venv ./venv && . venv/bin/activate && pip install -r requirements.txt
+
+
 COPY ../code_folder /App/code_folder
+COPY ../tests /App/tests
