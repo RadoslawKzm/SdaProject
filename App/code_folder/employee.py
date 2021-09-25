@@ -46,5 +46,12 @@ class Employee:
         {"name":"Waldemar", "last":"Dupa5", "age":69, "email":"Waldemar.Dupa5@company.com"}]"""
         output: list[Dict[str, Union[str, int]]] = []
         for emp_uuid, emp_obj in cls.registry.items():
-            output.append({"name": emp_obj.name, "last": emp_obj.last, "age": emp_obj.age, "email": emp_obj.email})
+            output.append(
+                {
+                    "name": emp_obj.name,
+                    "last": emp_obj.last,
+                    "age": emp_obj.age,
+                    "email": emp_obj.email,
+                }
+            )
         return output

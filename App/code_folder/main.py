@@ -19,7 +19,10 @@ async def get_imgw_data():
 @app.get("/get_imgw_with_station_id")
 async def get_imgw_with_station_id(station_id: int = 0):
     response = requests.get("https://danepubliczne.imgw.pl/api/data/synop")
-    return JSONResponse(status_code=status.HTTP_200_OK, content=filter_json(response.json(), str(station_id)))
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content=filter_json(response.json(), str(station_id)),
+    )
 
 
 @app.get("/get_random_users")
@@ -31,7 +34,9 @@ async def get_random_users(how_much: int = 1):
     # df.to_excel("Some_excel.xlsx")
     Dupa = 1
     print(Dupa)
-    return JSONResponse(status_code=status.HTTP_200_OK, content=response.json()["results"])
+    return JSONResponse(
+        status_code=status.HTTP_200_OK, content=response.json()["results"]
+    )
 
 
 @app.get("/create_random_users")
@@ -45,7 +50,9 @@ async def create_random_users(how_much: int = 1):
         Employee(name=name, last_name=last, age=age)
     # dictio = Employee.registry
 
-    return JSONResponse(status_code=status.HTTP_200_OK, content=Employee.get_json_registry())
+    return JSONResponse(
+        status_code=status.HTTP_200_OK, content=Employee.get_json_registry()
+    )
 
 
 @app.post("/post")
