@@ -4,7 +4,6 @@ from math import pi
 
 
 class Test:
-
     def setup_method(self):
         self.pizza1 = Pizza(name="Kaprikosa", d_cm=32, price_zl=25, costs_zl=5, toppings=["ser", "szynka", "pieczarki"])
         self.pizza2 = Pizza(name="Margerita", d_cm=40, price_zl=30, costs_zl=10, toppings=["ser"])
@@ -76,5 +75,5 @@ class Test:
         Pizza.overall_costs = 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pytest.main()
