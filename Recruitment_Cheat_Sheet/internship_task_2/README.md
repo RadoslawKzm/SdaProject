@@ -57,5 +57,3 @@ Zadanie mówi o usunięciu jednego pola- resztę należy wgrać.
 2. Jak powinna być przygotowana baza danych?
 
 Pozostawiamy to do dowolnej interpretacji. Warto zadać sobie pytanie jak chciałbyś/chciałabyś aby baza danych wygladało, żeby dobrze ci się z nią pracowało w przyszłości
-
-

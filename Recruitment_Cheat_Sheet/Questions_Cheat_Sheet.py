@@ -231,7 +231,9 @@ https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
 # 35. Co to jest pakiet, Co to jest modul? Jaka jest roznica?
 """Uzupelnijcie :D"""
 """"""
-# 36. Jakie znacie inne brokery wirtualnych srodowisk?
+# 36. Jakie znacie inne brokery wirtualnych srodowisk? venv virtualenv wirtualenv wrapper
+# 37. Co to jest piramida testow?
+# 38. Co to jest gitflow/github flow
 ############################## DOCKER #####################################3
 # 1. Co to są layery w dockerze?
 """Jak skladacie sobie docker file to kazda linijka to nowy layer.
