@@ -76,7 +76,5 @@ class Test:
         Pizza.overall_costs = 0
 
 
-
-
 if __name__ == '__main__':
     pytest.main()
