@@ -23,3 +23,9 @@ class Calculator:
     def add(self, x: float, y: float) -> float:
         self.check_input(x, y)
         return x + y
+
+    def sub(self, x, y):
+        return x - y
+
+    def multi(self, x, y):
+        return x * y
