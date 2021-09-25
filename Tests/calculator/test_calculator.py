@@ -1,4 +1,6 @@
+import pytest
 from calculator import Calculator
+
 
 def test_addition():
     test_val_1 = 5
@@ -8,3 +10,7 @@ def test_addition():
     calc = Calculator()
     retval = calc.add(test_val_1, test_val_2)
     assert expected_result == retval
+
+
+if __name__ == "__main__":
+    pytest.main()
