@@ -7,6 +7,12 @@ class Test:
     def setup_method(self):
         self.calc = Calculator()
 
+    @pytest.mark.xfail
+    def test_expected_fail(self):
+        retval = self.calc.add(5, 2)
+        assert retval == 5
+
+    @pytest.mark.dependency()
     def test_addition(self):
         for _ in range(1000):
             test_val_1 = random.uniform(-1000, 1000)
@@ -14,8 +20,9 @@ class Test:
             expected_result = test_val_1 + test_val_2
 
             retval = self.calc.add(test_val_1, test_val_2)
-            assert expected_result == retval
+            assert expected_result != retval
 
+    @pytest.mark.dependency(depends=["test_addition"])
     def test_addition1(self):
         test_val_1 = 5.5
         test_val_2 = 6.5
