@@ -6,6 +6,7 @@ coverage run --source /App/code_folder -m pytest --html=pytest_report.html --sel
 coverage report;
 coverage html;
 /bin/bash
+mkdir -p results
 rm -rf results/*
 mv /App/tests/htmlcov /App/tests/results/.
 mv /App/tests/pytest_report.html /App/tests/results/.
