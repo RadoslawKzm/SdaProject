@@ -1,6 +1,7 @@
 """
 Should support:
 1. Addition
+ - only floats
 2. Subtraction
 3. Division
 4. Multiplication
@@ -11,5 +12,5 @@ Should support:
 
 class Calculator:
     @staticmethod
-    def add(x: int, y: int) -> int:
+    def add(x: float, y: float) -> float:
         return x + y
