@@ -12,3 +12,5 @@ RUN python3 -m venv ./venv && . venv/bin/activate && pip install -r requirements
 
 COPY ../code_folder /App/code_folder
 COPY ../tests /App/tests
+COPY ../entrypoint_tests.sh /App/
+
