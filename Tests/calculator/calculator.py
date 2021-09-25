@@ -8,5 +8,8 @@ Should support:
 6. Factorial
 """
 
+
 class Calculator:
-    pass
+    @staticmethod
+    def add(x: int, y: int) -> int:
+        return x + y
