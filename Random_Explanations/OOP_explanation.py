@@ -20,7 +20,13 @@ if __name__ == "__main__":
     neptun = Planet(name="neptun")
     uran = Planet(name="uran")
     lst = [mars, jowisz, saturn, uran, neptun]
-    dictio = {"mars": mars, "jowisz": jowisz, "saturn": saturn, "neptun": neptun, "uran": uran}
+    dictio = {
+        "mars": mars,
+        "jowisz": jowisz,
+        "saturn": saturn,
+        "neptun": neptun,
+        "uran": uran,
+    }
 
     # lst = [
     #     Planet(name="mars"),

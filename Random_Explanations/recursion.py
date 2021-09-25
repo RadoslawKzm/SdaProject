@@ -18,7 +18,7 @@ def recursive_algorithm(first_node: Node):
         print("pass")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n1 = Node(name="n1", value=1)
     n2 = Node(name="n2", value=2)
     n3 = Node(name="n3", value=3)

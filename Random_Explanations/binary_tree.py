@@ -20,7 +20,7 @@ def reverse_tree(node: Node):
     node.left_node, node.right_node = node.right_node, node.left_node
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n4 = Node(name="n4", value=4)
     n5 = Node(name="n5", value=5)
     n2 = Node(name="n2", value=2, left=n4, right=n5)
