@@ -28,12 +28,9 @@ async def get_imgw_with_station_id(station_id: int = 0):
 @app.get("/get_random_users")
 async def get_random_users(how_much: int = 1):
     response = requests.get(f"https://randomuser.me/api/?results={how_much}")
-    response_json = response.json()
     # import pandas as pd
     # df = pd.DataFrame(response.json()["results"])
     # df.to_excel("Some_excel.xlsx")
-    Dupa = 1
-    print(Dupa)
     return JSONResponse(
         status_code=status.HTTP_200_OK, content=response.json()["results"]
     )

@@ -15,7 +15,7 @@ class Employee:
 
     def __init__(self, *, name: str, last_name: str, age: int) -> None:
         if age < 1:
-            raise ValueError("Age less than 0")
+            raise ValueError("Age less than 1")
         if not all((name, last_name)):
             raise ValueError("name or last name missing")
         self.name: str = name
