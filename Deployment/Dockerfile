@@ -1,4 +1,3 @@
-# pull official base image
 FROM ubuntu:latest
 
 RUN apt update -y && apt upgrade -y && \
@@ -10,9 +9,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUBUFFERED 1
 ENV PYTHONENCODING UTF-8
 ENV PYTHONPATH /
-COPY ../App/entrypoint_tests.sh /App/
+
 COPY ../App/requirements.txt /App/
 WORKDIR /App
-RUN pip3 install -r requirements.txt
-COPY ../App /App
-WORKDIR /App/code_folder
+RUN python3 -m venv ./venv && . venv/bin/activate && pip install -r requirements.txt
+
+COPY ../App/code_folder /App/code_folder
+COPY ../App/tests /App/tests
+COPY ../App/entrypoint_tests.sh /App/
+RUN chmod +x /App/entrypoint_tests.sh
