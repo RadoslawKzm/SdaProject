@@ -6,7 +6,9 @@ services:
     build:
       context: ../.
       dockerfile: ./Deployment/Dockerfile
-    entrypoint: /App/entrypoint_tests.sh
+    entrypoint: /Tests/pizza_exercise_docker/entrypoint_tests.sh
+    volumes: # volumes must remain because we want to save results to local disk
+      - ../tests/:/Tests/pizza_exercise_docker/tests
 
 
 

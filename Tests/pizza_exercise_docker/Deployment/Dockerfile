@@ -5,12 +5,17 @@ RUN apt update -y && apt upgrade -y && \
     pip3 install --upgrade pip && \
     apt install netcat curl -y
 
-COPY ../requirements.txt /App/
-WORKDIR /App/
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUBUFFERED 1
+ENV PYTHONENCODING UTF-8
+ENV PYTHONPATH /
+
+COPY ../requirements.txt /Tests/pizza_exercise_docker/
+WORKDIR /Tests/pizza_exercise_docker/
 RUN python3 -m venv ./venv && . venv/bin/activate && pip install -r requirements.txt
 
 
-COPY ../code_folder /App/code_folder
-COPY ../tests /App/tests
-COPY ../entrypoint_tests.sh /App/
-
+COPY ../code_folder /Tests/pizza_exercise_docker/code_folder
+COPY ../tests /Tests/pizza_exercise_docker/tests
+COPY ../entrypoint_tests.sh /Tests/pizza_exercise_docker/
+RUN chmod +x /Tests/pizza_exercise_docker/entrypoint_tests.sh
