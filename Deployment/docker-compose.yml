@@ -6,16 +6,11 @@ services:
     build:
       context: ../.
       dockerfile: ./Deployment/Dockerfile
-#    command: python3 main.py
-#    command: /bin/bash
+    command: python3 main.py
     ports:
       - "8001:8001"
     volumes: # volumes must remain because we want to save results to local disk
       - ../App/:/App
-# leaving it here for future debugging
-#    stdin_open: true # docker run -i
-#    tty: true        # docker run -t
-
 
   App-tests:
     container_name: Aplikacja-tests
@@ -23,9 +18,11 @@ services:
     build:
       context: ../.
       dockerfile: ./Deployment/Dockerfile
-    entrypoint: /App/entrypoint_tests.sh
+#    entrypoint: /App/entrypoint_tests.sh
     volumes: # volumes must remain because we want to save results to local disk
       - ../App/:/App
+#    stdin_open: true # docker run -i
+#    tty: true        # docker run -t
 
   postgres:
     container_name: database
