@@ -40,3 +40,35 @@ def test_get_imgw_with_station_id():
     assert response.status_code == 200
     assert response.json() == {item["id_stacji"]: item for item in input_data.imgw_request_mock}[STATION_ID]
 
+
+def test_get_random_users():
+    # response_object_mock = MagicMock()
+    # response_object_mock.json.return_value = input_data.random_user_request_mock
+    # response_object_mock.status_code = 200
+    #
+    # request_mock = MagicMock()
+    # request_mock.get.return_value = response_object_mock
+
+    # with patch("App.code_folder.main.requests", request_mock):
+    response = client.get("/get_random_users", params={"how_much": 5})
+    assert response.status_code == 200
+    assert response.json() == input_data.random_user_request_mock["results"]
+
+
+def test_create_random_users():
+    response_object_mock = MagicMock()
+    response_object_mock.json.return_value = input_data.random_user_request_mock
+    response_object_mock.status_code = 200
+
+    request_mock = MagicMock()
+    request_mock.get.return_value = response_object_mock
+    with patch("App.code_folder.main.requests", request_mock):
+        response = client.get("/create_random_users", params={"how_much": 5})
+    assert response.status_code == 200
+    assert response.json() == output_data.create_random_user_output_mock
+
+
+def test_post_data():
+    response = client.post("/post")
+    assert response.status_code == 200
+    assert response.json() == {"key": "some value"}
