@@ -1,6 +1,6 @@
 # pip3 install imports
 import requests
-from fastapi import FastAPI, HTTPException, Request, status
+from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 
 # user created modules
