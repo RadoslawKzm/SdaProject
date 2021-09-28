@@ -323,6 +323,7 @@ Mi sie udalo wylgac z tej odpowiedzi :D"""
 chodzi o to zeby do kazdej funkcjonalnosci dac odpowiedni typ requestu jak get post put patch"""
 # 15. Jak powiecie ze tylko FastAPI uzywacie to badzcie ready na pytania o asynchronicznosc
 """Polecam wytlumaczenie z konferencji javascript https://www.youtube.com/watch?v=8aGhZQkoFbQ"""
+# 16. Jak zapewnic ze nowa wersja api nie wywali innym klientom co uzywaja starej? Versioning
 
 ####################################### SQL ##############################################
 """Ogolnie w chuj pytan o robienie operacji"""
