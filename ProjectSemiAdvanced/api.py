@@ -1,11 +1,12 @@
-from fastapi import FastAPI, Request, Body
+from fastapi import FastAPI, Request
+from randomuser_schema import RandomUser
 
 app = FastAPI()
 
 
 @app.post("/")
-async def do_something(request: Request):
-    response = await request.json()
+async def do_something(request: RandomUser):
+    # response = await request.json()
     print("pass")
 
 
