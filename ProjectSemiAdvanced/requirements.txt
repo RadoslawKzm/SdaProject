@@ -1,4 +1,6 @@
-pandas
+fastapi
 numpy
 openpyxl
+pandas
+pydantic
 requests
