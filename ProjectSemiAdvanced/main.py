@@ -33,6 +33,8 @@ class RandomUser(BaseModel):
     nat: str
 
 
-tst: Dict = output[0]
-tst['gender'] = 1
-dupa = RandomUser(**output[0])
+# tst: Dict = output[0]
+# tst['gender'] = 1
+# dupa = RandomUser(**output[0])
+
+requests.post("http://127.0.0.1:8000", json=output[0])

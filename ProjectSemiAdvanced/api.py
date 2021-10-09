@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Body
 
 app = FastAPI()
 
 
 @app.post("/")
-def do_something(request: Request):
+async def do_something(request: Request):
+    response = await request.json()
     print("pass")
 
 
