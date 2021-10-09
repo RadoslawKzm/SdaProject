@@ -68,7 +68,7 @@ class RandomUsers(BaseModel):
 if __name__ == "__main__":
     # response = requests.get("https://randomuser.me/api/?results=50")
     # response_json = response.json()
-    test_input = {"results":[{
+    test_input = {"results": [{
         "gender": "female",
         "name": {"title": "Ms", "first": "Madison", "last": "Mcdonalid"},
         "location": {
@@ -101,9 +101,10 @@ if __name__ == "__main__":
             "thumbnail": "https://randomuser.me/api/portraits/thumb/women/90.jpg",
         },
         "nat": "AU",
-    }]}
-    test_output = RandomUser(**test_input)
-    assert test_output.name.last == "Mcdonalid"
-    assert test_output.location.street.name == "Mockingbird Ln"
-    assert test_output.login.username == "crazyduck195"
-    assert test_output.registered.age == 3
+    }],
+        "info": {'seed': '8ff3f93aca4f1084', 'results': 50, 'page': 1, 'version': '1.3'}}
+    test_output = RandomUsers(**test_input)
+    assert test_output.results[0].name.last == "Mcdonalid"
+    assert test_output.results[0].location.street.name == "Mockingbird Ln"
+    assert test_output.results[0].login.username == "crazyduck195"
+    assert test_output.results[0].registered.age == 3
