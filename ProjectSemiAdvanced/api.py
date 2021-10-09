@@ -4,7 +4,7 @@ app = FastAPI()
 
 
 @app.post("/")
-def do_something(request=Request):
+def do_something(request: Request):
     print("pass")
 
 
