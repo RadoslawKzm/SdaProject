@@ -19,4 +19,5 @@ df.to_json("test.json")
 from sqlalchemy import create_engine
 
 alchemyEngine = create_engine('postgresql+psycopg2://postgres:changeme@127.0.0.1:5432/db')
-df.to_sql("dupa", con=alchemyEngine)
+df.to_sql("dupa", con=alchemyEngine, if_exists="append")
+rslt_df = df[df['gender'] == "male"]
