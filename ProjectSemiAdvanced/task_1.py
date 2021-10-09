@@ -6,6 +6,7 @@
 """
 import json
 import pandas as pd
+import psycopg2
 
 with open("randomuser.json") as file:
     data = json.load(file)
@@ -14,3 +15,8 @@ new_list2 = [{key: value for key, value in sub_dict.items() if type(value) != di
 df = pd.DataFrame(new_list2)
 df.to_csv("test.csv")
 df.to_json("test.json")
+
+from sqlalchemy import create_engine
+
+alchemyEngine = create_engine('postgresql+psycopg2://postgres:changeme@127.0.0.1:5432/db')
+df.to_sql("dupa", con=alchemyEngine)
