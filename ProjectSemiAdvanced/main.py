@@ -15,23 +15,7 @@ user = {
     "country": "Switzerland",
     "postcode": 2572}
 
-
-df = pd.DataFrame(user.items())
-
-# response = requests.get(url="https://randomuser.me/api/?results=50")
-# output = response.json()
-# with open("randomuser.json", "w") as file:
-#     json.dump(output, file)
-#
-# with open("randomuser.json", "r") as file:
-#     output = json.load(file)
-#
-# df = pd.read_json("randomuser.json")
-
-
-# tst: Dict = output[0]
-# tst['gender'] = 1
-# dupa = RandomUser(**output[0])
-
-# del output[0]['gender']
-# response = requests.post("http://127.0.0.1:8000", json=output[0])
+df = pd.DataFrame([user])
+df.to_json("test.json")
+df.to_csv("test.csv")
+df.to_excel("test.xlsx")
