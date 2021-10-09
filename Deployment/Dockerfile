@@ -17,4 +17,5 @@ RUN python3 -m venv ./venv && . venv/bin/activate && pip install -r requirements
 COPY ../App/code_folder /App/code_folder
 COPY ../App/tests /App/tests
 COPY ../App/entrypoint_tests.sh /App/
+COPY ../App/entrypoint.sh /App/
 RUN chmod +x /App/entrypoint_tests.sh
