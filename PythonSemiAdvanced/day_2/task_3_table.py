@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String
 # from sqlalchemy.ext.declarative import declarative_base
 
-from ProjectSemiAdvanced.day_2.task_3 import Base
+from PythonSemiAdvanced.day_2.task_3 import Base
 
 class BaseTable(Base):
     __tablename__ = "base_table"
