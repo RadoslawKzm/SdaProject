@@ -3,8 +3,12 @@ with open("test.py", "w") as file2:
 
 
 class X:
+    def __init__(self, file_name: str):
+        pass
+
     def __enter__(self):
         pass
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         pass
 
@@ -17,11 +21,17 @@ finally:
 
 
 class our_open:
+    def __init__(self, file_name: str, method: str = "rt"):
+        self.file_name = file_name
+        self.method = method
+
     def __enter__(self):
-        pass
+        self.file_obj = open(self.file_name, self.method)
+        return self.file_obj
+
     def __exit__(self, exc_type, exc_val, exc_tb):
-        pass
+        self.file_obj.close()
 
-with our_open("plik.txt") as file:
-    file.write("dupa")
 
+with our_open("plik.txt", "w") as file:
+    file.write("dupa22")
