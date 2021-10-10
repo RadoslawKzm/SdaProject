@@ -1,5 +1,5 @@
 # built-in imports
-from typing import Dict
+from typing import Dict, List
 
 # pip3 imports
 import requests
@@ -61,7 +61,7 @@ class Info(BaseModel):
 
 
 class RandomUsers(BaseModel):
-    results: RandomUser
+    results: List[RandomUser]
     info: Info
 
 

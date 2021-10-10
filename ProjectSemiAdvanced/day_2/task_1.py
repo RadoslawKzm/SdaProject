@@ -33,7 +33,7 @@ if __name__ == '__main__':
     # response = requests.get("https://randomuser.me/api/?results=3")
     # test_input = response.json()
     # test_output = exctractor(input_list=test_input)
-    test_input = {"results":[{
+    test_input = {"results": [{
         "gender": "female",
         "name": {"title": "Ms", "first": "Madison", "last": "Mcdonalid"},
         "location": {

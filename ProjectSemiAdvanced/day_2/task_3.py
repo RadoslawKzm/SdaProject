@@ -1,19 +1,29 @@
-import requests
-from fastapi import FastAPI, status
-from fastapi.responses import JSONResponse
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+# from ProjectSemiAdvanced.day_2.task_3_table import BaseTable
 
-from ProjectSemiAdvanced.day_2.task_2 import RandomUsers
+Base = declarative_base()
 
 
-async def get_user():
+def get_engine():
     """
-    Create get API endpoint under '/' link at 127.0.0.1:8000 host.
-    This api will call randomuser API and get 1 user.
-    Our code will parse incoming request using our RandomUsers model
-    Our API will return status code=200 and json.
-    json={"first_name"="Marek", "last_name":"Mostowiak", "age":69, "email":"mareczq69@gmail.com"}
+    Simple function for getting SQLalchemy engine object
+    :return: SQLalchemy engine object with established connection
     """
-    # response = requests.get("https://randomuser.me/api/?results=1")
-    # response_json = response.json()
-    # random_users = RandomUsers(**response_json)
-    return JSONResponse(status_code="dupa", content={"dupa nie content": 69})
+    POSTGRES_USER = "postgres"
+    POSTGRES_PASSWORD = "changeme"
+    POSTGRES_HOSTNAME = "localhost"
+    PORT = 5432
+    POSTGRES_DB = "db"
+    return create_engine(
+        f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOSTNAME}/{POSTGRES_DB}"
+    )
+
+
+Base.metadata.create_all(get_engine())
+Session = sessionmaker(bind=get_engine())
+session = Session()
+"""cos zrobic"""
+session.commit()
+session.close()
