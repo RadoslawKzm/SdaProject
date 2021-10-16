@@ -51,6 +51,7 @@ class Female(User):
         self.last_name = last_name
         self.email = email
         self.age = age
+        self.update_list(self=self)
 
     def woof(self) -> None:
         print(f"Yes daddy! {self.name}")
@@ -65,6 +66,7 @@ class Male(User):
         self.last_name = last_name
         self.email = email
         self.age = age
+        self.update_list(self=self)
 
     def woof(self) -> None:
         print("Woff woof!")
