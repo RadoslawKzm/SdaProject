@@ -17,9 +17,12 @@ import re
 # output_4 = re.match(r"d", strin)
 # output_5 = re.search(r"dupa", strin)
 
-st: set = set()
+# st: set = set()
+#
+# with open("7-RegEx_example", "r") as file:
+#     for line in file:
+#         if text := re.findall(r"(?<=\* Cell {13}: )\w+", line):
+#             st.add(text[0].strip())
 
-with open("7-RegEx_example", "r") as file:
-    for line in file:
-        if text := re.findall(r"(?<=\* Cell {13}: )\w+", line):
-            st.add(text[0].strip())
+with open("7-RegEx_example2") as file:
+    pass
