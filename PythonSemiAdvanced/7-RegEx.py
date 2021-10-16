@@ -81,6 +81,8 @@ with open("7-RegEx_example2", encoding='cp850') as file:
         #     Female(first_name=firstname, last_name=lastname, email=email, age=age)
         #
         tst = User.as_dict()[gender](first_name=firstname, last_name=lastname, email=email, age=age)
-        tst2 = tst.woof
-        tst.woof()
-        print("apss")
+        # tst2 = tst.woof
+        # tst.woof()
+        # print("apss")
+
+print(Female)
