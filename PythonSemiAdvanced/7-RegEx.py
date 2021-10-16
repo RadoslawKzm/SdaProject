@@ -24,5 +24,10 @@ import re
 #         if text := re.findall(r"(?<=\* Cell {13}: )\w+", line):
 #             st.add(text[0].strip())
 
-with open("7-RegEx_example2") as file:
-    pass
+with open("7-RegEx_example2", encoding='cp850') as file:
+    line = file.readline()
+    users = re.split(r"(?={\"gender)", line)[1:]
+    for user in users:
+        email = re.split(r"[.@]", re.findall(r"(?<=\"email\":\")[a-zA-z.@]*", user)[0])
+
+        print("pass")
