@@ -37,9 +37,14 @@ class User(ABC):
     def woof(self) -> None:
         """implement woofing"""
 
+    @classmethod
+    def update_list(cls, *, self):
+        cls.gender_list.append(self)
+
 
 class Female(User):
     name: str = "female"
+    gender_list: list = []
 
     def __init__(self, *, first_name: str, last_name: str, email: str, age: int):
         self.first_name = first_name
@@ -53,6 +58,7 @@ class Female(User):
 
 class Male(User):
     name: str = "male"
+    gender_list: list = []
 
     def __init__(self, *, first_name: str, last_name: str, email: str, age: int):
         self.first_name = first_name
@@ -64,25 +70,21 @@ class Male(User):
         print("Woff woof!")
 
 
-with open("7-RegEx_example2", encoding='cp850') as file:
-    line = file.readline()
-    users = re.split(r"(?={\"gender)", line)[1:]
-    for user in users:
-        email = re.findall(r"(?<=\"email\":\")[a-zA-z.@]*", user)[0]
-        parts = re.split(r"[.@]", email[0])
-        gender = re.findall(r"(?<=\"gender\":\")[a-zA-z.@]*", user)[0]
-        firstname = re.findall(r"(?<=,\"first\":\")[a-zA-z.@]*", user)[0]
-        lastname = re.findall(r"(?<=,\"last\":\")[a-zA-z.@]*", user)[0]
-        age = re.findall(r"(?<=,\"age\":)[0-9]*(?=},\"registered\")", user)[0]
-        print("pass")
-        # if gender == "male":
-        #     Male(first_name=firstname, last_name=lastname, email=email, age=age)
-        # if gender == "female":
-        #     Female(first_name=firstname, last_name=lastname, email=email, age=age)
-        #
-        tst = User.as_dict()[gender](first_name=firstname, last_name=lastname, email=email, age=age)
-        # tst2 = tst.woof
-        # tst.woof()
-        # print("apss")
+def first():
+    with open("7-RegEx_example2", encoding='cp850') as file:
+        line = file.readline()
+        users = re.split(r"(?={\"gender)", line)[1:]
+        for user in users:
+            email = re.findall(r"(?<=\"email\":\")[a-zA-z.@]*", user)[0]
+            gender = re.findall(r"(?<=\"gender\":\")[a-zA-z.@]*", user)[0]
+            firstname = re.findall(r"(?<=,\"first\":\")[a-zA-z.@]*", user)[0]
+            lastname = re.findall(r"(?<=,\"last\":\")[a-zA-z.@]*", user)[0]
+            age = re.findall(r"(?<=,\"age\":)[0-9]*(?=},\"registered\")", user)[0]
+            User.as_dict()[gender](first_name=firstname, last_name=lastname, email=email, age=age)
+
+
+def second():
+    pass
+
 
 print(Female)
