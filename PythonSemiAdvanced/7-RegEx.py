@@ -23,11 +23,64 @@ import re
 #     for line in file:
 #         if text := re.findall(r"(?<=\* Cell {13}: )\w+", line):
 #             st.add(text[0].strip())
+from abc import ABC, abstractmethod
+
+
+class User(ABC):
+    """Each subclass has to have name"""
+
+    @classmethod
+    def as_dict(cls):
+        return {obj.name: obj for obj in cls.__subclasses__()}
+
+    @abstractmethod
+    def woof(self) -> None:
+        """implement woofing"""
+
+
+class Female(User):
+    name: str = "female"
+
+    def __init__(self, *, first_name: str, last_name: str, email: str, age: int):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.age = age
+
+    def woof(self) -> None:
+        print(f"Yes daddy! {self.name}")
+
+
+class Male(User):
+    name: str = "male"
+
+    def __init__(self, *, first_name: str, last_name: str, email: str, age: int):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.age = age
+
+    def woof(self) -> None:
+        print("Woff woof!")
+
 
 with open("7-RegEx_example2", encoding='cp850') as file:
     line = file.readline()
     users = re.split(r"(?={\"gender)", line)[1:]
     for user in users:
-        email = re.split(r"[.@]", re.findall(r"(?<=\"email\":\")[a-zA-z.@]*", user)[0])
-
+        email = re.findall(r"(?<=\"email\":\")[a-zA-z.@]*", user)[0]
+        parts = re.split(r"[.@]", email[0])
+        gender = re.findall(r"(?<=\"gender\":\")[a-zA-z.@]*", user)[0]
+        firstname = re.findall(r"(?<=,\"first\":\")[a-zA-z.@]*", user)[0]
+        lastname = re.findall(r"(?<=,\"last\":\")[a-zA-z.@]*", user)[0]
+        age = re.findall(r"(?<=,\"age\":)[0-9]*(?=},\"registered\")", user)[0]
         print("pass")
+        # if gender == "male":
+        #     Male(first_name=firstname, last_name=lastname, email=email, age=age)
+        # if gender == "female":
+        #     Female(first_name=firstname, last_name=lastname, email=email, age=age)
+        #
+        tst = User.as_dict()[gender](first_name=firstname, last_name=lastname, email=email, age=age)
+        tst2 = tst.woof
+        tst.woof()
+        print("apss")
