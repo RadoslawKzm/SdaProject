@@ -1,51 +1,79 @@
-import multiprocessing
+from multiprocessing import Pool
 from functools import reduce
 from typing import List
 
-HOW_MUCH = 10_000_000
-items = list(range(HOW_MUCH))
 
-
-def map_example(*, lst: List[int]) -> int:
+def map_example(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting map_example")
-    return len(list(map(lambda x: x ** 2, lst)))
+    retval = len(list(map(lambda x: x ** 2, lst)))
+    return_dict["filter_comp"] = retval
+    print(f"done calculating map_example {retval}")
+    return retval
 
 
-def map_comp(*, lst: List[int]) -> int:
+def map_comp(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting map_comp")
-    return len([x ** 2 for x in lst])
+    retval = len([x ** 2 for x in lst])
+    return_dict["filter_comp"] = retval
+    print(f"done calculating map_comp {retval}")
+    return retval
 
 
-def filter_example(*, lst: List[int]) -> int:
+def filter_example(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting filter_example")
-    return len(list(filter(lambda x: x % 2, lst)))
+    retval = len(list(filter(lambda x: x % 2, lst)))
+    return_dict["filter_comp"] = retval
+    print(f"done calculating filter_example {retval}")
+    return retval
 
 
-def filter_comp(*, lst: List[int]) -> int:
+def filter_comp(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting filter_comp")
-    return len([x for x in lst if x % 2 != 0])
+    retval = len([x for x in lst if x % 2 != 0])
+    return_dict["filter_comp"] = retval
+    print(f"done calculating filter_comp {retval}")
+    return retval
 
 
-def reduce_example(*, lst: List[int]) -> int:
+def reduce_example(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting reduce_example")
-    return reduce(lambda x, y: x + y, lst)
+    retval = reduce(lambda x, y: x + y, lst)
+    return_dict["reduce_example"] = retval
+    print(f"done calculating reduce_example {retval}")
+    return retval
 
 
-def reduce_comp(*, lst: List[int]) -> int:
+def reduce_comp(*, lst: List[int], return_dict: dict) -> int:
     print(f"Starting reduce_comp")
-    return sum(lst)
-
-
-def worker(num):
-    """thread worker function"""
-    print
-    'Worker:', num
-    return
+    retval = sum(lst)
+    return_dict["reduce_comp"] = retval
+    print(f"done calculating reduce_comp {retval}")
+    return retval
 
 
 if __name__ == '__main__':
-    jobs = []
-    for i in range(5):
-        p = multiprocessing.Process(target=worker, args=(i,))
-        jobs.append(p)
-        p.start()
+    HOW_MUCH: int = 1_000_000
+    items: list = list(range(HOW_MUCH))
+    # jobs: list = []
+    # return_dict: dict = {}
+    # for func in [map_example, map_comp, filter_example, filter_comp, reduce_example, reduce_comp]:
+    #     p = multiprocessing.Process(target=func, kwargs={"lst": items, "return_dict": return_dict})
+    #     jobs.append(p)
+    # queue = multiprocessing.Queue()
+    # for p in jobs:
+    #     p.start()
+
+    # result = [queue.get() for p in jobs]
+    # print(result)
+    #
+    # for p in jobs:
+    #     p.join()
+    # print(result)
+
+    # with Pool() as pool:
+    #     # results_list = pool.starmap(, [(width, height, figures, position) for position in play_fields])
+    #     results_list = pool.starmap(map_example, {"lst": items})
+
+    # print("pass")
+
+
