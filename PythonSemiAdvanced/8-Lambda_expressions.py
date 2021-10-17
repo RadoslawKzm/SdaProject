@@ -1,5 +1,7 @@
 import time
 from functools import reduce
+from operator import itemgetter
+from random import randint
 from typing import List
 import numpy as np
 
@@ -49,11 +51,25 @@ def reduce_comp(*, lst: List[int]) -> int:
     return sum(lst)
 
 
+@time_measure
+def stupid_sort(*, lst: List[List[int]]) -> List[List[int]]:
+    return sorted(lst, key=lambda x: x[2], reverse=True)
+
+
+@time_measure
+def good_sort(*, lst: List[List[int]]) -> List[List[int]]:
+    return sorted(lst, key=itemgetter(2), reverse=True)
+
+
 if __name__ == '__main__':
-    HOW_MUCH = 10_000_000
-    items = list(range(HOW_MUCH))
+    # HOW_MUCH = 10_000_000
+    # items = list(range(HOW_MUCH))
     # arr = np.arange(HOW_MUCH)
-    lst = [[1, 2, 3], [1, 5, 7], [1, 2, 3]]
+    how_much_inner = 3
+    how_much_outer = 1_000_000
+    lst = [[randint(0, 100) for inner in range(how_much_inner)] for outer in range(how_much_outer)]
+    # print(stupid_sort(lst=lst))
+    # print(good_sort(lst=lst))
     # comprehension_example(lst=items)
     # map_example(lst=items)
     # array_example(arr=arr)
@@ -61,3 +77,6 @@ if __name__ == '__main__':
     # filter_comp(lst=items)
     # reduce_example(lst=items)
     # reduce_comp(lst=items)
+    # import cProfile
+    #
+    # cProfile.run('stupid_sort(lst=lst)')
