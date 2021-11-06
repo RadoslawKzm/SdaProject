@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.session import Session
 
 Base = declarative_base()
 
@@ -17,7 +18,7 @@ class DbContext(sessionmaker):
         super(DbContext, self).__init__(*args, **kwargs)
         self.suppress = suppress
 
-    def __enter__(self):
+    def __enter__(self) -> Session:
         """
         :return: SQLalchemy session object for context manager to operate on.
         """
