@@ -4,6 +4,9 @@ import requests
 import pandas as pd
 from output import output_short
 
+from db_connector import Base, DbContext
+from db_tables import Movies
+
 
 class Movie:
     movies = []
@@ -50,6 +53,10 @@ def populate_csv():
     pd.DataFrame(Movie.movies).to_csv("new_movies_2.csv")
 
 
+
+
 if __name__ == '__main__':
     # get_movies_from_omdb()
     populate_csv()
+    Base.metadata.create_all(DbContext.get_engine())
+
