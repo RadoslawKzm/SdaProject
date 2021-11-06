@@ -46,4 +46,4 @@ class DbContext(sessionmaker):
         POSTGRES_DB = "db"
         return create_engine(
             f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOSTNAME}/{POSTGRES_DB}"
-            , echo=True)
+        )
