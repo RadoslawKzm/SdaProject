@@ -12,6 +12,14 @@ def get_movies_from_omdb():
 
 def populate_csv():
     """populate new_movies.csv with data"""
+    lst = []
+    for m in output_short:
+        new_dict = {"title": m["Title"], "runtime": m["Runtime"], "genre": m["Genre"],
+                    "director": m["Director"], "cast": m["Actors"], "writer": m["Writer"], "language": m["Language"],
+                    "country": m["Country"], "awards": m["Awards"], "imdb_rating": m["imdbRating"],
+                    "imdb_votes": m["imdbVotes"], "box_office": m.get("BoxOffice", "")}
+        lst.append(new_dict)
+    pd.DataFrame(lst).to_csv("new_movies.csv", index_label="id")
 
 
 if __name__ == '__main__':
