@@ -49,14 +49,16 @@ def populate_csv():
     #     lst.append(new_dict)
     # pd.DataFrame(lst).to_csv("new_movies.csv", index_label="id")
     for movie_dict in output_short:
-        movie = Movie(movie_dict)
-    pd.DataFrame(Movie.movies).to_csv("new_movies_2.csv")
+        Movie(movie_dict)
+    pd.DataFrame(Movie.movies).to_csv("new_movies_2.csv", index_label="id")
 
-
+    with DbContext(bind=DbContext.get_engine()) as session:
+        # for movie in Movie.movies:
+        #     session.add(Movies(**movie))
+        session.add_all([Movies(**movie) for movie in Movie.movies])
 
 
 if __name__ == '__main__':
     # get_movies_from_omdb()
-    populate_csv()
     Base.metadata.create_all(DbContext.get_engine())
-
+    populate_csv()

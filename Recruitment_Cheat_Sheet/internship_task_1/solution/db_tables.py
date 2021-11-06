@@ -6,7 +6,7 @@ class Movies(Base):
     __tablename__ = "movies"
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    year = Column(Integer)
+    year = Column(String)
     runtime = Column(String)
     genre = Column(String)
     director = Column(String)
@@ -15,6 +15,6 @@ class Movies(Base):
     language = Column(String)
     country = Column(String)
     awards = Column(String)
-    imdb_rating = Column(Float)
+    imdb_rating = Column(String)
     imdb_votes = Column(String)
     box_office = Column(String)
