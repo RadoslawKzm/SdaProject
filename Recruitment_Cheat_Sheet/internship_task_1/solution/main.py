@@ -58,7 +58,19 @@ def populate_csv():
         session.add_all([Movies(**movie) for movie in Movie.movies])
 
 
+def get_all_data() -> list:
+    with DbContext(bind=DbContext.get_engine()) as session:
+        output = session.query(Movies).all()
+        return [{k: v for k, v in result.__dict__.items() if not k.startswith("_")} for result in output]
+
+
+def sort_by_year() -> list:
+    with DbContext(bind=DbContext.get_engine()) as session:
+        output = session.query(Movies).order_by(Movies.year).all()
+        return [{k: v for k, v in result.__dict__.items() if not k.startswith("_")} for result in output]
+
+
 if __name__ == '__main__':
     # get_movies_from_omdb()
     Base.metadata.create_all(DbContext.get_engine())
-    populate_csv()
+    # populate_csv()
