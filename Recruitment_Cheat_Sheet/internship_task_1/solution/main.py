@@ -1,6 +1,6 @@
 import requests
-import csv
 import pandas as pd
+from output import output_short
 
 
 def get_movies_from_omdb():
@@ -10,5 +10,10 @@ def get_movies_from_omdb():
         file.write(f"output={str(output)}")
 
 
+def populate_csv():
+    """populate new_movies.csv with data"""
+
+
 if __name__ == '__main__':
-    dummy()
+    # get_movies_from_omdb()
+    populate_csv()
