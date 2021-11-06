@@ -1,10 +1,31 @@
+from typing import Dict
+
 import requests
 import pandas as pd
 from output import output_short
 
 
 class Movie:
-    """pass"""
+    movies = []
+
+    def __init__(self, input_dict: Dict[str, str]):
+        self.title = input_dict["Title"]
+        self.year = input_dict["Year"]
+        self.runtime = input_dict["Runtime"]
+        self.genre = input_dict["Genre"]
+        self.director = input_dict["Director"]
+        self.actors = input_dict["Actors"]
+        self.writer = input_dict["Writer"]
+        self.language = input_dict["Language"]
+        self.country = input_dict["Country"]
+        self.awards = input_dict["Awards"]
+        self.imdb_rating = input_dict["imdbRating"]
+        self.imdb_votes = input_dict["imdbVotes"]
+        self.box_office = input_dict.get("BoxOffice", "")
+        self.update_movies()
+
+    def update_movies(self):
+        self.movies.append(self.__dict__)
 
 
 def get_movies_from_omdb():
@@ -26,7 +47,8 @@ def populate_csv():
     # pd.DataFrame(lst).to_csv("new_movies.csv", index_label="id")
     for movie_dict in output_short:
         movie = Movie(movie_dict)
-    pd.DataFrame(Movie.movie_list).to_csv("new_movies_2.csv")
+    pd.DataFrame(Movie.movies).to_csv("new_movies_2.csv")
+
 
 if __name__ == '__main__':
     # get_movies_from_omdb()
