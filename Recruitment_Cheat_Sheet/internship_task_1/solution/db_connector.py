@@ -16,13 +16,14 @@ class DbContext(sessionmaker):
 
     def __init__(self, *args, suppress: bool = False, **kwargs):
         super(DbContext, self).__init__(*args, **kwargs)
+        self.Session = sessionmaker(bind=DbContext.get_engine())
         self.suppress = suppress
 
     def __enter__(self) -> Session:
         """
         :return: SQLalchemy session object for context manager to operate on.
         """
-        self.session = self()
+        self.session = self.Session()
         return self.session
 
     def __exit__(self, exc_type, exc_val, exc_tb):

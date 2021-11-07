@@ -74,3 +74,4 @@ if __name__ == '__main__':
     # get_movies_from_omdb()
     Base.metadata.create_all(DbContext.get_engine())
     # populate_csv()
+    get_all_data()
