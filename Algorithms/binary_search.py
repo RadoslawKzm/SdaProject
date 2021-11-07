@@ -1,7 +1,7 @@
 from typing import List
 
-inpt:List[int] = list(range(512))
+inpt: List[int] = list(range(512))
 
 
-def find_number(num:int):
+def is_number_inside(num: int, collection: List[int]) -> bool:
     """implement binary search"""
