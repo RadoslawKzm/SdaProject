@@ -15,3 +15,11 @@ if __name__ == '__main__':
     arr = [8, 5, 2, 9, 5, 6, 3]
     selection_sort(arr)
     print(arr)
+
+    arr = [8, 5, 2, 9, 5, 6, 3]
+    selection_sort(arr)
+    print(arr)
+
+    arr = [8, 5, 2, 9, 5, 6, 3]
+    selection_sort(arr)
+    print(arr)
