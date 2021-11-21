@@ -13,34 +13,34 @@ class Leaf:
 
 class BinaryTree:
     def __init__(self, numbers: Sequence[int]):
-        # self.leaves: list[Leaf] = [Leaf(value=num) for num in numbers]
-        # self.connect()
-        # self.leaf = None
         self.leaves = []
         for num in numbers:
             self.insert(num)
-
-    def connect(self):
-        for leaf in self.leaves:
-            val = leaf.value
-            left_val = val * 2 - 1
-            right_val = val * 2
-            if not (left_val > len(self.leaves) - 1):
-                leaf.left = self.leaves[left_val]
-            if not (right_val > len(self.leaves) - 1):
-                leaf.right = self.leaves[right_val]
 
     def insert(self, number: int):
         if not self.leaves:
             self.leaves.append(Leaf(number))
             return
+        new_leaf = Leaf(number)
         for leaf in self.leaves:
             if not leaf.left:
-                leaf.left = Leaf(number)
+                leaf.left = new_leaf
+                self.leaves.append(new_leaf)
                 break
             if not leaf.right:
-                leaf.right = Leaf(number)
+                leaf.right = new_leaf
+                self.leaves.append(new_leaf)
                 break
+
+    def reverse_tree(self):
+        self._reverse(leaf=self.leaves[0])
+
+    def _reverse(self, leaf: Leaf):
+        if leaf.left:
+            self._reverse(leaf=leaf.left)
+        if leaf.right:
+            self._reverse(leaf=leaf.right)
+        leaf.left, leaf.right = leaf.right, leaf.left
 
 
 if __name__ == '__main__':
@@ -54,4 +54,5 @@ if __name__ == '__main__':
     two = Leaf(value=2, left=four, right=five)
     one = Leaf(value=1, left=two, right=three)
     tree = BinaryTree(numbers=[1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # tree.insert(10)
+    tree.insert(10)
+    tree.reverse_tree()
