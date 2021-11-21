@@ -1,9 +1,25 @@
 class Trie:
-    def insert(self, word: str) -> None:
-        pass
+    def __init__(self):
+        self.trie = {}
 
-    def has_item(self, word: str) -> bool:
-        pass
+    def insert(self, word: str) -> None:
+        active = self.trie
+        for letter in word:
+            active = active.setdefault(letter, {})
+        active["*"] = "_end"
+
+    def full_search(self, word: str) -> bool:
+        return self._serch(word).get("*") == "_end" or False
+
+    def partial_search(self, word: str) -> bool:
+        return bool(self._serch(word))
+
+    def _serch(self, word: str) -> dict:
+        active = self.trie
+        for letter in word:
+            if not (active := active.get(letter)):
+                return {}
+        return active
 
 
 if __name__ == '__main__':
@@ -12,5 +28,5 @@ if __name__ == '__main__':
     trie.insert("assumption")
     trie.insert("assertion")
     trie.insert("asap")
-    assert trie.has_item("ass") == True
-    assert trie.has_item("assumption") == True
+    # assert trie.search("ass") == True
+    # assert trie.search("assumption") == True
