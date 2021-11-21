@@ -8,9 +8,9 @@ class Trie:
 
 if __name__ == '__main__':
     trie = Trie()
-    trie.insert("duch")
-    trie.insert("dupa")
-    trie.insert("duda")
-    trie.insert("duchowny")
-    assert trie.has_item("duch") == True
-    assert trie.has_item("duchowny") == True
+    trie.insert("ass")
+    trie.insert("assumption")
+    trie.insert("assertion")
+    trie.insert("asap")
+    assert trie.has_item("ass") == True
+    assert trie.has_item("assumption") == True
