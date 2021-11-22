@@ -9,12 +9,12 @@ class Trie:
         active["*"] = "_end"
 
     def full_search(self, word: str) -> bool:
-        return self._serch(word).get("*") == "_end" or False
+        return self._search(word).get("*") == "_end" or False
 
     def partial_search(self, word: str) -> bool:
-        return bool(self._serch(word))
+        return bool(self._search(word))
 
-    def _serch(self, word: str) -> dict:
+    def _search(self, word: str) -> dict:
         active = self.trie
         for letter in word:
             if not (active := active.get(letter)):
