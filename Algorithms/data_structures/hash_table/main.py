@@ -73,7 +73,7 @@ class NewDictionary:
         return {value for slot in self.storage for _, value in slot if slot}
 
     def items(self):
-        return {k:v for k,v in zip(self.keys(), self.values())}
+        return {k: v for k, v in zip(self.keys(), self.values())}
 
 
 if __name__ == '__main__':
