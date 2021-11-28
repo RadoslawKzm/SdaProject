@@ -14,7 +14,7 @@ class Proxy:
         self.last_query_time = 0
         self.last_query_result = 0
 
-    def get(self, database: Database):
+    def get(self, db: Database):
         now = datetime.datetime.now()
         try:
             if (now - self.last_query_time).seconds < 300:
@@ -22,8 +22,9 @@ class Proxy:
                 return self.last_query_result
         except TypeError:
             self.last_query_time = now
-            self.last_query_result = database.get()
+            self.last_query_result = db.get()
             return self.last_query_result
+
 
 if __name__ == '__main__':
     database = Database()
