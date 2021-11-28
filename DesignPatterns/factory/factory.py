@@ -1,21 +1,24 @@
+import importlib
 import json
+
 from DesignPatterns.factory.plugins.character_abc import CharacterABC
 
 
-def factory(path="plugins/characters.json"):
-    with open(path) as file:
-        modules_data = json.load(file)
-    for name, module in modules_data.items():
-        extract_from_module = module["extract_from_module"]
-        file_path = module["file_path"]
-        enabled = module["enabled"]
+class Factory:
+    modules: dict = {}
+    characters: dict[str, CharacterABC] = {}
 
+    def get_modules(self, *, file_path="plugins/characters.json"):
+        with open(file_path) as file:
+            self.modules_data = json.load(file)
 
-def func(characters: list[CharacterABC]):
-    for character in characters:
-        character.make_noise()
-        character.move()
+    def import_modules(self):
+        for module_properties in self.modules_data.values():
+            module = importlib.import_module(module_properties["file_path"])
+            if not module_properties["enabled"]:
+                continue
+            self.modules[module_properties["class_name"]] = (getattr(module, module_properties["class_name"]))
 
-
-if __name__ == '__main__':
-    factory()
+    def load_modules(self):
+        for module_name, module_obj in self.modules.items():
+            self.characters[module_name] = module_obj()

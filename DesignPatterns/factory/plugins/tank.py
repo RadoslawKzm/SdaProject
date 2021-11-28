@@ -1,4 +1,5 @@
 from DesignPatterns.factory.plugins.character_abc import CharacterABC
+import time
 
 
 class Tank(CharacterABC):

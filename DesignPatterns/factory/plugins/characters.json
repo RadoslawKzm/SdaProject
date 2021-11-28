@@ -1,17 +1,22 @@
 {
   "tank": {
-    "extract_from_module": "Tank",
+    "class_name": "Tank",
     "file_path": "DesignPatterns.factory.plugins.tank",
-    "enabled": "True"
+    "enabled": true
   },
   "wizard": {
-    "extract_from_module": "Wizard",
+    "class_name": "Wizard",
     "file_path": "DesignPatterns.factory.plugins.wizard",
-    "enabled": "True"
+    "enabled": false
   },
   "bard": {
-    "extract_from_module": "Bard",
+    "class_name": "Bard",
     "file_path": "DesignPatterns.factory.plugins.bard",
-    "enabled": "True"
+    "enabled": true
+  },
+  "assassin": {
+    "class_name": "Assassin",
+    "file_path": "DesignPatterns.factory.plugins.assassin",
+    "enabled": true
   }
 }
