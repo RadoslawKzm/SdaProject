@@ -1,26 +1,36 @@
+import datetime
+import time
+
+
 class Database:
-    def __init__(self):
-        self.data: list = []
-
-    def insert(self, item):
-        self.data.append(item)
-
-    def insert_many(self, *items):
-        self.data.extend(items)
-
     def get(self):
         print("getteing from db")
-        return [item for item in range(10_000_000)]
+        time.sleep(3)
+        return [item for item in range(10)]
 
 
-def main(database):
-    return database.get()
+class Proxy:
+    def __init__(self):
+        self.last_query_time = 0
+        self.last_query_result = 0
 
+    def get(self, database: Database):
+        now = datetime.datetime.now()
+        try:
+            if (now - self.last_query_time).seconds < 300:
+                self.last_query_time = now
+                return self.last_query_result
+        except TypeError:
+            self.last_query_time = now
+            self.last_query_result = database.get()
+            return self.last_query_result
 
 if __name__ == '__main__':
     database = Database()
-    print(main(database))
-    print(main(database))
-    print(main(database))
-    print(main(database))
-    print(main(database))
+    proxy = Proxy()
+    proxy.get(database)
+    proxy.get(database)
+    proxy.get(database)
+    proxy.get(database)
+    proxy.get(database)
+    proxy.get(database)
