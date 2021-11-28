@@ -1,0 +1,17 @@
+{
+  "tank": {
+    "extract_from_module": "Tank",
+    "file_path": "DesignPatterns.factory.plugins.tank",
+    "enabled": "True"
+  },
+  "wizard": {
+    "extract_from_module": "Wizard",
+    "file_path": "DesignPatterns.factory.plugins.wizard",
+    "enabled": "True"
+  },
+  "bard": {
+    "extract_from_module": "Bard",
+    "file_path": "DesignPatterns.factory.plugins.bard",
+    "enabled": "True"
+  }
+}
