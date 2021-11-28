@@ -8,4 +8,4 @@ class CharacterABC(ABC):
 
     @abstractmethod
     def make_noise(self) -> None:
-        """implement noise funciton"""
+        """implement noise function"""

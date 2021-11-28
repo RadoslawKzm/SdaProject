@@ -12,6 +12,11 @@ bard = Bard()
 # for character in characters:
 #     character.make_noise()
 
-def func(character: CharacterABC):
-    character.make_noise()
-    character.move()
+def func(characters: list[CharacterABC]):
+    for character in characters:
+        character.make_noise()
+        character.move()
+
+
+if __name__ == '__main__':
+    func([tank, wizard, bard])
