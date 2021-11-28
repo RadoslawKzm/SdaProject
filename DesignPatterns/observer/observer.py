@@ -1,13 +1,8 @@
-class Subscriber:
-    def __init__(self, name):
-        self.name = name
-
-    def notification(self, info):
-        print(f"{self.name} got some {info= }")
+from subscribers import SubscriberABC, SubscriberSlack, SubscriberEmail, SubscriberTeams
 
 
 class Trashcan:
-    def __init__(self, *subscribers: Subscriber):
+    def __init__(self, *subscribers: SubscriberABC):
         self.subscribers = [subscriber for subscriber in subscribers]
 
     def send_notification(self):
@@ -16,9 +11,8 @@ class Trashcan:
 
 
 if __name__ == '__main__':
-    user1 = Subscriber("Slack")
-    user2 = Subscriber("Teams")
-    user3 = Subscriber("Logger")
-    user4 = Subscriber("Email")
-    trashcan = Trashcan(user1, user2, user3, user4)
+    slack = SubscriberSlack("Slack")
+    teams = SubscriberTeams("Teams")
+    email = SubscriberEmail("Email")
+    trashcan = Trashcan(slack, teams, email)
     trashcan.send_notification()
