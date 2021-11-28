@@ -1,13 +1,20 @@
-from subscribers import SubscriberABC, SubscriberSlack, SubscriberEmail, SubscriberTeams
+from typing import Protocol
+
+from subscribers import SubscriberSlack, SubscriberEmail, SubscriberTeams
+
+
+class Notifiable(Protocol):
+    def notify(self, info: str) -> None:
+        ...
 
 
 class Trashcan:
-    def __init__(self, *subscribers: SubscriberABC):
+    def __init__(self, *subscribers: Notifiable):
         self.subscribers = [subscriber for subscriber in subscribers]
 
     def send_notification(self):
         for subscriber in self.subscribers:
-            subscriber.notification("Jestem pełny.")
+            subscriber.notify("I'm full")
 
 
 if __name__ == '__main__':
