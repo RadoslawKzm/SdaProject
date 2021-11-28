@@ -1,5 +1,9 @@
-class Wizard:
+from DesignPatterns.factory.plugins.character_abc import CharacterABC
+
+
+class Wizard(CharacterABC):
     name = "Wizard"
+
     def make_noise(self):
         print(f"{self.name} is making noise")
 

@@ -1,4 +1,7 @@
-class Bard:
+from DesignPatterns.factory.plugins.character_abc import CharacterABC
+
+
+class Bard(CharacterABC):
     name = "Bard"
 
     def make_noise(self):
